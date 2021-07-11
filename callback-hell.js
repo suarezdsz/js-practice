@@ -23,7 +23,7 @@ const getEmployee = (id, callback)=>{
     if(employee){
         callback(null, employee);
     }else{
-        callback('Employee widt id ${10} does not exist')
+        callback(`Employee widt id ${id} does not exist`)
     }
     return employee;
 }

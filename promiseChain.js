@@ -22,18 +22,6 @@ const id = 1
 
 const getEmployee = (id, callback)=>{
     
-    /*
-    const promese = new Promise((resolve, reject)=>{
-        const employee = employees.find(e => e.id === id);
-
-        if(employee){
-            resolve(employee);
-        }else{
-            reject('error');
-        }
-    });
-
-    return promese;*/
 
     //simplify code
 

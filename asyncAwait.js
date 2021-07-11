@@ -16,25 +16,11 @@ const salaries = [
 
 const id = 1
 
-const getEmployee = (id, callback)=>{
+const getEmployee =  (id, callback)=>{
     
-    /*
-    const promese = new Promise((resolve, reject)=>{
-        const employee = employees.find(e => e.id === id);
-
-        if(employee){
-            resolve(employee);
-        }else{
-            reject('error');
-        }
-    });
-
-    return promese;*/
-
-    //simplify code
 
     return new Promise((resolve, reject) =>{
-        const employee = employees.find( e=> e.id === id);
+        const employee = employees.find( e=> e.id === id)?.name;
 
         (employee) ? resolve( employee) : reject ( 'Employee does not exist');
     });
@@ -51,13 +37,24 @@ const getSalary = (id) => {
     });
 };
 
-let body_emp;
 
 //print
-getEmployee(id).then( employee => { 
-    body_emp = employee;
-    return getSalary(id);
-}).then( salary => {
-    console.log(salary, body_emp)
-})
+
+
+const getInfoEmployee = async (id) => {
+
+    try {
+        const employee = await getEmployee(id);
+        const salary = await getSalary(id);
+    
+        return `the employee's salary: ${ employee } is ${ salary } `;
+    } catch (error) {
+        return 'Error';
+    }
+
+
+
+}
+
+getInfoEmployee(id).then( msg => console.log(msg)).catch(err => console.log(err));
 
